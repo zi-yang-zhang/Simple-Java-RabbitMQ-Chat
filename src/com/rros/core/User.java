@@ -12,16 +12,18 @@ public class User {
 	private String exchangeName;
 	private String queueName; 
 	private QueueingConsumer consumer;
+	private int userID;
 	
 	public User() throws KeyManagementException, NoSuchAlgorithmException, URISyntaxException, IOException {
 		connector = new Connector.Builder().build();
+		userID = this.hashCode();
 		connector.connect();
 		connectToExchange("chatroom");
 		declareQueue();
 		bindQueue();
 		consumer = new QueueingConsumer(connector.getChannel());
 		connector.getChannel().basicConsume(queueName, true, consumer);
-		new receiverThread(consumer).run();
+		new receiverThread(consumer,userID).start();
 	}
 	
 	public void connectToExchange(String exchangeName){
@@ -35,6 +37,7 @@ public class User {
 		connector.getChannel().queueBind(queueName, exchangeName, "");
 	}
 	public void publish(String msg) throws IOException{
+		msg = String.valueOf(userID)+":"+msg;
 		connector.getChannel().basicPublish(exchangeName, "", null, msg.getBytes());
 	}
 }

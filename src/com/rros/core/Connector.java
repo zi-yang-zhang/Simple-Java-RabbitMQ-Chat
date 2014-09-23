@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import com.rros.resources.Ultil;
+import com.rros.resources.Util;
 
 public class Connector {
 	private Connection connection;
@@ -17,7 +17,7 @@ public class Connector {
 
 	public static class Builder {
 		private ConnectionFactory factory;
-		private static final String RABBIT_SERVER_URI = Ultil.getURI();
+		private static final String RABBIT_SERVER_URI = Util.getURI();
 
 		public Builder() throws KeyManagementException,
 				NoSuchAlgorithmException, URISyntaxException {
