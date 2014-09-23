@@ -5,11 +5,11 @@ import com.rabbitmq.client.ConsumerCancelledException;
 import com.rabbitmq.client.QueueingConsumer;
 import com.rabbitmq.client.ShutdownSignalException;
 
-public class receiverThread extends Thread {
+public class ReceiverThread extends Thread {
 	private QueueingConsumer consumer;
 	private int userID;
 
-	public receiverThread(QueueingConsumer consumer, int userID) {
+	public ReceiverThread(QueueingConsumer consumer, int userID) {
 		super();
 		this.consumer = consumer;
 		this.userID = userID;

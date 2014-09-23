@@ -23,7 +23,7 @@ public class User {
 		bindQueue();
 		consumer = new QueueingConsumer(connector.getChannel());
 		connector.getChannel().basicConsume(queueName, true, consumer);
-		new receiverThread(consumer,userID).start();
+		new ReceiverThread(consumer,userID).start();
 	}
 	
 	public void connectToExchange(String exchangeName){
