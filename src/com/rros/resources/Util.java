@@ -1,7 +1,7 @@
 package com.rros.resources;
 
 public class Util {
-		private static final String uri = "amqp://9DqbH5fS:ghxvlG_IVRpFuJncpm8sFBu2tqnmJzES@skinny-woundwort-15.bigwig.lshift.net:10632/7k9USvqwPOZm";
+		private static final String uri = "amqp://test:test@54.174.129.185:5672/test";
 
 		public static String getURI(){
 			return uri;

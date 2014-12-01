@@ -22,8 +22,16 @@ public class Connector {
 		public Builder() throws KeyManagementException,
 				NoSuchAlgorithmException, URISyntaxException {
 			factory = new ConnectionFactory();
-			factory.setUri(RABBIT_SERVER_URI);
+			factory.setUsername("test");
+            factory.setPassword("test");
+            factory.setHost("54.174.129.185");
+            factory.setPort(5672);
+            factory.setVirtualHost("/test");
 		}
+        public Builder setUsername(String username){
+            factory.setUsername(username);
+            return this;
+        }
 
 		public Connector build() {
 			return new Connector(this);
